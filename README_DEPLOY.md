@@ -1,16 +1,15 @@
 # Déploiement (GitHub Pages)
 
-1) Dans le dépôt GitHub Pages (par ex. `fondationintelligence.github.io` ou `intelligencefoundation.github.io`), remplacez le contenu existant par les fichiers de ce paquet.
-2) Conservez l’arborescence :
-   - `index.html`
-   - `assets/`
-   - `docs/`
-3) Commit + push.
-4) Dans **Settings → Pages** : activez le déploiement depuis la branche principale (dossier `/`).
-5) Vérifiez le site public.
+Ce paquet contient le site web **statique** (HTML/CSS) du programme éducatif public gratuit **« Littératie en sécurité de l’IA »** de la Fondation Intelligence / Intelligence Foundation.
 
-## Mise à jour rapide (preuve d’activité)
-- Mettez à jour le **Journal public des activités** (section #journal) à chaque publication.
-- Après une séance publique : ajoutez le lien (YouTube), puis joignez les supports (PDF) dans `docs/`.
+## Contenu du paquet
+- `index.html` — page principale (programme + Modules 0–6 + exercices/quiz/corrigés + journal public + gouvernance + historique)
+- `assets/` — ressources (images)
+- `docs/` — documents de gouvernance et supports (PDF/ZIP/PPTX)
 
-Dernière génération du paquet : 2025-12-17
+## Mise en ligne (rapide)
+1) Décompressez l’archive.
+2) Copiez **tout** le contenu du dossier dans le dépôt GitHub Pages (racine du repo ou dossier `/docs/`, selon votre configuration).
+3) Vérifiez que l’URL publique affiche bien la page `index.html` et que les liens vers `docs/` fonctionnent.
+
+Version : **v1.3 (2025-12-19)**  
