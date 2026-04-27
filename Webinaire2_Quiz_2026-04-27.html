@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz — Webinaire 2 : Littératie en sécurité de l’IA agentique</title>
+  <style>
+    :root{--ink:#0f172a;--muted:#475569;--line:#e2e8f0;--bg:#f8fafc;--ok:#166534;--bad:#991b1b}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55;color:var(--ink);margin:0;background:white}
+    main{max-width:920px;margin:0 auto;padding:32px 20px 56px}
+    header{border:1px solid var(--line);border-radius:16px;background:var(--bg);padding:22px 24px;margin-bottom:24px}
+    h1{font-size:1.8rem;line-height:1.2;margin:0 0 12px} h2{margin-top:34px} p.small{color:var(--muted);font-size:.95rem}
+    fieldset{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0;background:#fff}
+    legend{font-weight:700;padding:0 6px}.choices label{display:block;margin:8px 0}.short input{width:min(100%,680px);padding:9px;border:1px solid var(--line);border-radius:8px}
+    button{background:var(--ink);color:white;border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;margin-top:10px}
+    .result{border-radius:12px;padding:14px 16px;margin:18px 0;background:var(--bg);border:1px solid var(--line)}
+    .ok{color:var(--ok);font-weight:700}.bad{color:var(--bad);font-weight:700}.answer{color:var(--muted);font-size:.95rem;margin-top:8px}
+    details{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:18px;background:var(--bg)} summary{cursor:pointer;font-weight:700}
+    footer{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;color:var(--muted);font-size:.95rem}
+  </style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Quiz — Webinaire 2 : Littératie en sécurité de l’IA agentique (intro)</h1>
+  <p><strong>Fondation Intelligence / Intelligence Foundation</strong><br>Programme éducatif public gratuit — non commercial — NE/BN : 855938502 RR0001</p>
+  <p class="small">Auto-évaluation locale : aucune réponse n’est envoyée à un serveur. Les questions servent à vérifier la compréhension des notions vues dans le webinaire.</p>
+</header>
+
+<form id="quiz">
+  <fieldset><legend>1. Vrai/Faux</legend><p>Un agent IA peut agir via des outils externes.</p><div class="choices"><label><input type="radio" name="q1" value="true"> Vrai</label><label><input type="radio" name="q1" value="false"> Faux</label></div></fieldset>
+  <fieldset><legend>2. QCM</legend><p>Quel est le premier garde-fou à appliquer à un agent IA ?</p><div class="choices"><label><input type="radio" name="q2" value="a"> a) Autonomie totale</label><label><input type="radio" name="q2" value="b"> b) Moindre privilège</label><label><input type="radio" name="q2" value="c"> c) Secret</label><label><input type="radio" name="q2" value="d"> d) Vitesse</label></div></fieldset>
+  <fieldset><legend>3. Vrai/Faux</legend><p>Un plan généré par l’agent équivaut à une autorisation.</p><div class="choices"><label><input type="radio" name="q3" value="true"> Vrai</label><label><input type="radio" name="q3" value="false"> Faux</label></div></fieldset>
+  <fieldset class="short"><legend>4. Réponse courte</legend><p>Nommez deux actions qui devraient rester sous validation humaine.</p><input type="text" name="q4" placeholder="Ex. envoi, achat, suppression, publication..."></fieldset>
+  <fieldset><legend>5. QCM</legend><p>Une injection de prompt peut venir d’un...</p><div class="choices"><label><input type="radio" name="q5" value="a"> a) Document, site ou message</label><label><input type="radio" name="q5" value="b"> b) Logo</label><label><input type="radio" name="q5" value="c"> c) Police de caractères</label><label><input type="radio" name="q5" value="d"> d) Hasard</label></div></fieldset>
+  <fieldset><legend>6. Vrai/Faux</legend><p>Journaliser les actions aide l’audit et la correction.</p><div class="choices"><label><input type="radio" name="q6" value="true"> Vrai</label><label><input type="radio" name="q6" value="false"> Faux</label></div></fieldset>
+  <fieldset class="short"><legend>7. Réponse courte</legend><p>Nommez deux éléments d’un journal minimal.</p><input type="text" name="q7" placeholder="Ex. objectif, outil, données, action proposée, décision..."></fieldset>
+  <fieldset><legend>8. QCM</legend><p>Si un agent propose d’envoyer un courriel sensible, que doit-on faire avant l’envoi ?</p><div class="choices"><label><input type="radio" name="q8" value="a"> a) Valider</label><label><input type="radio" name="q8" value="b"> b) Ignorer</label><label><input type="radio" name="q8" value="c"> c) Publier</label><label><input type="radio" name="q8" value="d"> d) Effacer la trace</label></div></fieldset>
+  <fieldset><legend>9. Vrai/Faux</legend><p>Les tests de red teaming doivent éviter les détails nuisibles et les données réelles.</p><div class="choices"><label><input type="radio" name="q9" value="true"> Vrai</label><label><input type="radio" name="q9" value="false"> Faux</label></div></fieldset>
+  <fieldset class="short"><legend>10. Réponse courte</legend><p>Formulez une décision « acceptable avec garde-fous » pour un agent qui prépare un brouillon.</p><input type="text" name="q10" placeholder="Ex. acceptable avec permissions limitées, brouillon, validation, trace..."></fieldset>
+  <button type="button" onclick="scoreQuiz()">Vérifier mes réponses</button>
+</form>
+<div id="result" class="result" aria-live="polite">Le résultat apparaîtra ici.</div>
+
+<details>
+  <summary>Corrigé détaillé</summary>
+  <ol>
+    <li><strong>Vrai.</strong> Un agent peut utiliser des outils externes selon ses permissions.</li>
+    <li><strong>b) Moindre privilège.</strong> L’agent ne doit avoir que les accès nécessaires.</li>
+    <li><strong>Faux.</strong> Un plan n’est pas une autorisation.</li>
+    <li>Exemples : envoi, achat, suppression, publication, modification de calendrier, traitement de données sensibles.</li>
+    <li><strong>a) Document, site ou message.</strong> Une instruction cachée peut modifier le comportement attendu.</li>
+    <li><strong>Vrai.</strong> La journalisation aide l’audit, la correction et la revue des incidents.</li>
+    <li>Exemples : objectif, outil utilisé, données consultées, action proposée, décision humaine, résultat, garde-fous.</li>
+    <li><strong>a) Valider.</strong> Toute action sensible nécessite une validation humaine.</li>
+    <li><strong>Vrai.</strong> Les tests doivent rester génériques, sûrs et sans données personnelles réelles.</li>
+    <li>Exemple : acceptable avec permissions limitées, brouillon seulement, validation humaine avant envoi, et trace minimale.</li>
+  </ol>
+</details>
+
+<footer>
+  <p>Ressources : <a href="https://fondationintelligence.github.io/">fondationintelligence.github.io</a>. Ce contenu est fourni à des fins éducatives et ne constitue pas un avis juridique, médical, financier ou professionnel.</p>
+</footer>
+</main>
+<script>
+function v(name){const e=document.querySelector('input[name="'+name+'"]:checked');return e?e.value:''}
+function hasAny(txt, words){txt=(txt||'').toLowerCase();return words.some(w=>txt.includes(w))}
+function scoreQuiz(){let s=0, notes=[];
+ const checks={q1:'true',q2:'b',q3:'false',q5:'a',q6:'true',q8:'a',q9:'true'};
+ for(const [q,a] of Object.entries(checks)){if(v(q)===a){s++}else{notes.push(q.toUpperCase()+': à revoir')}}
+ const q4=document.querySelector('[name="q4"]').value; if(hasAny(q4,['envoi','envoyer','achat','acheter','suppression','supprimer','publication','publier','calendrier','sensible','donnée'])) s++; else notes.push('Q4: donner deux actions sensibles');
+ const q7=document.querySelector('[name="q7"]').value; if(hasAny(q7,['objectif','outil','donnée','données','action','décision','decision','résultat','resultat','garde'])) s++; else notes.push('Q7: nommer deux éléments du journal');
+ const q10=document.querySelector('[name="q10"]').value; if(hasAny(q10,['permission','permissions','brouillon','validation','humain','trace','journal','limité','limitee','limitées','limitees'])) s++; else notes.push('Q10: inclure permissions, brouillon, validation et trace');
+ const pct=Math.round(100*s/10); const cls=s>=8?'ok':'bad';
+ document.getElementById('result').innerHTML='<span class="'+cls+'">Score : '+s+'/10 ('+pct+'%).</span>'+(notes.length?'<br><span class="answer">À revoir : '+notes.join('; ')+'</span>':'<br><span class="answer">Très bien. Consultez le corrigé pour comparer les formulations.</span>');
+}
+</script>
+</body>
+</html>
